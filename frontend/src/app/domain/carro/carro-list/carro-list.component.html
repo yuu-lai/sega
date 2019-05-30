@@ -1,0 +1,43 @@
+<!-- Títuto da página -->
+<div class="content-background p-2">
+  <h1 class="page-title white-title">Carro</h1>
+
+  <button class="btn btn-secondary mb-3" routerLink="/carro/novo">
+    <svg style="margin-right: 3px; margin-bottom: 2px;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus-circle" class="svg-inline--fa fa-plus-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20px" height="20px">
+      <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"></path>
+    </svg>
+    Cadastrar
+  </button>
+
+  <!-- Lista de garagens -->
+  <table class="table table-light">
+    <thead>
+      <tr>
+        <th class="text-center col-ml-1">Fabricante</th>
+        <th class="text-center col-ml-1">Modelo</th>
+        <th class="text-center col-ml-1">Garagem</th>
+        <th class="text-center col-ml-1">Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let carro of carros">
+        <td class="text-center">
+          <button class="btn btn-link" [routerLink]="['/carro/visualizar', carro.id]"> {{ carro.fabricante }} </button>       
+        </td>
+        <td class="text-center">{{ carro.modelo }}</td>
+        <td class="text-center">{{ carro.garagem.nome }}</td>
+        <td class="text-center">
+
+          <button class="btn btn-link ml-2" [routerLink]="['/carro/editar', carro.id]">
+            Editar
+          </button>
+
+          <button class="btn btn-primary ml-2" (click)="onDelete(carro.id)">
+            Deletar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

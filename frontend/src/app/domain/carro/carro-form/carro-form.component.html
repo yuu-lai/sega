@@ -1,0 +1,73 @@
+<!-- Título da página -->
+<div class="content-background p-2">
+<h1 class="page-title white-title">{{ titulo }} Carro</h1>
+
+<form [formGroup]="carroForm">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-12">
+          <field label="Fabricante" required="true">
+            <input type="text" class="form-control" formControlName="fabricante" />
+          </field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <field label="Versão" required="true">
+            <input type="text" class="form-control" formControlName="versao" />
+          </field>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <field label="Descrição" required="true">
+            <input type="text" class="form-control" formControlName="descricao" />
+          </field>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <field label="Cor" required="true">
+            <input type="text" class="form-control" formControlName="cor" />
+          </field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <field label="Valor" required="true">
+            <input type="text" class="form-control" formControlName="valor" />
+          </field>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <field label="Modelo" required="true">
+            <input type="modelo" class="form-control" formControlName="modelo" />
+          </field>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <field label="Garagem" required="true">
+            <select class="form-control" formControlName="garagem" [compareWith]="compareFn">
+              <option value="" hidden>Selecione uma opção</option>
+              <option *ngFor="let garagem of garagens" [ngValue]="garagem">{{ garagem.nome }}</option>
+            </select>
+          </field>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button class="btn btn-primary" [routerLink]="['/carro/editar', carro.id]" *ngIf="carroForm.disabled">
+        Editar
+      </button>
+
+      <button class="btn btn-success" (click)="onSave(carroForm.value)" *ngIf="!carroForm.disabled">
+        Salvar
+      </button>
+
+      <button class="btn btn-default ml-2" routerLink="/carro">
+        Cancelar
+      </button>
+    </div>
+  </div>
+</form>
+</div>

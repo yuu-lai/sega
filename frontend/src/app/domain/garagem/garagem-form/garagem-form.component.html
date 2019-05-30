@@ -1,0 +1,77 @@
+<div class="content-background p-2">
+  <h1 class="page-title">{{ titulo }} Garagens</h1>
+
+  <!-- Formulário -->
+  <form [formGroup]="garagemForm">
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+        <div class="row">
+          <div class="col-md-12">
+            <field label="Nome" required="true">
+              <input type="text" class="form-control" formControlName="nome" />
+            </field>
+          </div>
+        </div>
+
+        <div formGroupName="endereco">
+          <div class="row">
+            <div class="col-md-6 col-lg-4">
+              <field label="Logradouro" required="true">
+                <input type="text" class="form-control" formControlName="logradouro" />
+              </field>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <field label="Complemento" required="true">
+                <input type="text" class="form-control" formControlName="complemento" />
+              </field>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <field label="Bairro" required="true">
+                <input type="text" class="form-control" formControlName="bairro" />
+              </field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 col-lg-4">
+              <field label="Cidade" required="true">
+                <input type="text" class="form-control" formControlName="cidade" />
+              </field>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <field label="Estado" required="true">
+                <input type="text" class="form-control" formControlName="estado" />
+              </field>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <field label="Pais" required="true">
+                <select class="form-control" formControlName="pais" [compareWith]="compareFn">
+                  <option value="" hidden>Selecione uma opção</option>
+                  <option *ngFor="let pais of paises" [ngValue]="pais">{{ pais.nome }}</option>
+                </select>
+              </field>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-footer">
+        <button class="btn btn-primary" [routerLink]="['/garagem/editar', garagem.id]" *ngIf="garagemForm.disabled">
+          Editar
+        </button>
+
+        <button class="btn btn-success" (click)="onSave(garagemForm.value)" *ngIf="!garagemForm.disabled">
+          Salvar
+        </button>
+        <button class="btn btn-default ml-2" routerLink="/garagem">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

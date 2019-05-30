@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button
+    class="navbar-toggler hidden-sm-up"
+    type="button"
+    (click)="isNavbarCollapsed = !isNavbarCollapsed"
+    data-target="#navbarsDefault"
+    aria-controls="navbarsDefault"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
+    
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link menu-icon" routerLinkActive="active" routerLink="dashboard"></a>
+      </li>
+
+      <div class="right-menu">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="carro">Carro</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="garagem">Garagem</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="pais">País</a>
+        </li>
+      </div>
+    </ul>
+  </div>
+</nav>
+
+<div class="content-body">
+  <div class="container">
+    <alert></alert>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<footer class="sega-allPages-footer" style="margin-top: 350px;">
+  <div id="imagens-links-parceiros">
+    <a href="http://ftt.unievangelica.edu.br/portal/" target="_blank">
+      <div id="ftt" title="Fábrica de Tecnologias Turing (FTT)"></div>
+    </a>
+    <a href="http://v2.unievangelica.edu.br/engenharia-de-software/" target="_blank" class="container-img">
+      <div class="border-img">
+        <div id="computacao" title="Bacherelados em Computação - UniEvangélica"></div>
+      </div>
+    </a>
+  </div>
+  <div class="center copyright">
+    <p>&copy; Copyright SEGA MOTORS&trade; 1960&mdash;2019</p>
+  </div>
+</footer>

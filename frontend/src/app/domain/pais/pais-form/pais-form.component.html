@@ -1,0 +1,49 @@
+<div class="content-background p-2">
+<!-- Título da página -->
+<h1 class="page-title">{{ titulo }}</h1>
+
+<!-- Formulário -->
+<form [formGroup]="paisForm">
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <!-- Primeira linha -->
+    <div class="row">
+
+      <!-- Nome -->
+      <div class="col-md-12 col-lg-12">
+        <field label="Nome" required="true">
+            <input type="text" class="form-control" formControlName="nome">
+        </field>        
+      </div> <!-- Fim nome -->
+      
+    </div> 
+    <!-- Fim primeira linha -->
+
+  </div> <!-- Fim panel-body -->
+  <div class="panel-footer">
+
+    <!-- Botão para editar -->
+    <button class="btn btn-primary"
+      [routerLink]="['/pais/editar', pais.id]"
+      *ngIf="paisForm.disabled">
+      Editar
+    </button>
+
+    <!-- Botão para salvar -->
+    <button class="btn btn-success" 
+      (click)="onSave(paisForm.value)"
+      *ngIf="!paisForm.disabled">
+      Salvar
+    </button>
+
+    <!-- Botão para lista -->
+    <button class="btn btn-default ml-2"
+      routerLink="/pais">
+      Cancelar
+    </button>
+
+  </div> <!-- Fim panel-footer -->
+</div> <!-- Fim panel -->
+</form>
+</div>

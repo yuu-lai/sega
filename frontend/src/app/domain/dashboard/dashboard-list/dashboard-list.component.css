@@ -1,0 +1,15 @@
+* {
+  color: white;
+  padding-top: 20px;
+  transition: all 0.5s ease;
+}
+
+.center {
+    text-align: center;
+}
+
+.sega-title {
+    font-weight: bold;
+    padding: 20px;
+    border-bottom: 1px solid white;
+}
